@@ -1,15 +1,25 @@
-
-//Estos son los pines que vienen desde la tablilla
+/*
+ * Terminal   Description
+ * GND        Power supply ground.
+ * OUT        Output Freq.
+ * S0, S1     Scaling freq selection.   
+ * S2, S3     Photodiode type selection inputs.
+ * LED        Supply voltaje for LED.
+ * VCC        Supply voltage
+ * 
+ */
 const int s0=1;
 const int s1=2;
 const int s2=3;
 const int s3=4;
 const int out=5;
+
 const int btn=6;
 //los valores que regresará de cada color según la refracción
 int rojo=0;
 int verde=0;
 int azul =0;
+
 int rojoa=0;
 int verdea=0;
 int azula =0;
@@ -21,17 +31,25 @@ int diferenciav=0;
 void setup() {
  Serial.begin(9600);
   //Son las salidas que encienden los leds
- pinMode (s0,OUTPUT);
+ pinMode (s0,OUTPUT);   
  pinMode (s1,OUTPUT);
+
  pinMode (s2,OUTPUT);
  pinMode (s3,OUTPUT);
-
- //la entrada que recibe el pulso y lo cuantifica
  pinMode (btn,INPUT);
+ //la entrada que recibe el pulso y lo cuantifica
+
  pinMode (out,INPUT);
+ // Calibra la frecuencia de salida según la tabla de abajo
  digitalWrite(s0,HIGH);
  digitalWrite(s1,HIGH);
- 
+  /*
+  * s0  s1  Outfreq
+  * L   L   Power down
+  * L   H   2%
+  * H   L   20%
+  * H   H   100%
+  */
 
 }
 
